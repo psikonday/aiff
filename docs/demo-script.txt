@@ -1,0 +1,19 @@
+150-second captioned walkthrough of actual application screenshots. No audio.
+
+MINI SMART PARKING GUIDE
+A classroom simulation of parking under uncertainty. BFS finds routes, Bayesian inference updates occupancy, and Value Iteration chooses an action.
+
+01 / ORIGINAL SCENARIO
+A has 75% estimated occupancy. B and C have 7.7%. The planner chooses B in six moves. The green route avoids the red space and blocked cells.
+
+02 / WHEN EVERY SENSOR SENDS AN ALERT
+The planner recommends checking A again. No driving route is drawn. Check has expected value 5.20, compared with 3.13 for Skip and 0 for Exit.
+
+03 / A SECOND READING CHANGES THE DECISION
+Select NO ALERT THIS TIME. Bayesian updating lowers the occupancy estimate from 75% to 27.3%. The planner now chooses A, four moves from the entrance.
+
+04 / AN UNREACHABLE PARKING AREA
+Both cells beside the entrance are blocked. BFS finds no route and the model recommends leaving. Road cells can be clicked to add or remove obstacles.
+
+TESTED, EXPLAINABLE, AND LIMITED IN SCOPE
+20 automated tests pass, including 300 shortest-path comparisons. The readings and rewards are simulated. Source, report, slides and AI declaration accompany the project.
