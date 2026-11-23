@@ -1,0 +1,91 @@
+{
+  "checks": 20,
+  "passed": 20,
+  "failed": 0,
+  "safetyScenarios": 152,
+  "randomMaps": 100,
+  "shortestPathComparisons": 300,
+  "seed": 12345,
+  "results": [
+    {
+      "name": "Bayes: alert posterior equals 0.75",
+      "status": "PASS"
+    },
+    {
+      "name": "Bayes: clear posterior equals 1/13",
+      "status": "PASS"
+    },
+    {
+      "name": "Bayes: repeated alerts yield 27/29",
+      "status": "PASS"
+    },
+    {
+      "name": "Bayes: contradictory second reading yields 3/11",
+      "status": "PASS"
+    },
+    {
+      "name": "Bayes: endpoints and invalid observations",
+      "status": "PASS"
+    },
+    {
+      "name": "BFS: start equals target",
+      "status": "PASS"
+    },
+    {
+      "name": "BFS: avoids flagged A and reaches B in six moves",
+      "status": "PASS"
+    },
+    {
+      "name": "BFS: invalid or blocked target is unreachable",
+      "status": "PASS"
+    },
+    {
+      "name": "BFS: enclosed start returns no path",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: certain free space has analytical value 28",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: certain occupied space recommends exit",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: free unreachable space is not a driving action",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: no recheck budget removes Check action",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: all alerts make information worth buying",
+      "status": "PASS"
+    },
+    {
+      "name": "MDP: full Bellman sweep is a fixed point",
+      "status": "PASS"
+    },
+    {
+      "name": "Integration: all eight initial signal combinations",
+      "status": "PASS"
+    },
+    {
+      "name": "Safety: 152 prior/signal scenarios never cross a blocked cell",
+      "status": "PASS"
+    },
+    {
+      "name": "BFS: matches independent shortest-distance oracle on 100 maps",
+      "status": "PASS"
+    },
+    {
+      "name": "Recheck: a clear reading can enable a safe route",
+      "status": "PASS"
+    },
+    {
+      "name": "Recheck: repeated alerts never lead into likely occupied cells",
+      "status": "PASS"
+    }
+  ]
+}

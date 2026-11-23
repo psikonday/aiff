@@ -1,0 +1,1 @@
+{"name":"mini-smart-parking-guide","version":"2.0.0","private":true,"description":"BFS, Bayesian inference and finite belief-state MDP parking demonstration","scripts":{"test":"node tests/run.js","start":"python3 -m http.server 8000"}}
