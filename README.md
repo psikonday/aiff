@@ -42,7 +42,7 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 
 - [Technical report](docs/technical-report.pdf)
 - [Presentation (PowerPoint, 7 slides)](docs/presentation.pptx)
-- [Demo video](docs/demo.mp4): 2:30 captioned screenshot walkthrough, no audio
+- [Demo video](docs/demo.mp4): 2:39 animated walkthrough in 1080p
 - [AI Usage Declaration (editable Word document)](docs/ai-usage-declaration.docx)
 - [AI Usage Declaration (editable Markdown source)](docs/ai-usage-declaration.md)
 - [AI Usage Declaration (PDF)](docs/ai-usage-declaration.pdf)
