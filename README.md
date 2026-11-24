@@ -20,7 +20,7 @@ Run `node tests/run.js` (Node.js required). Results are written to `docs/test-re
 - `js/core.js`: pure AI algorithms shared with tests
 - `js/app.js`: interaction, route preview and scenario export
 - `tests/run.js`: analytical, property and integration tests
-- `docs/`: one report, one presentation, one video and two separate statements
+- `docs/`: report, presentation, demo video, declarations and supporting documentation
 
 ## Course alignment
 
@@ -43,7 +43,8 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 - [Technical report](docs/technical-report.pdf)
 - [Presentation (PowerPoint, 7 slides)](docs/presentation.pptx)
 - [Demo video](docs/demo.mp4): 2:30 captioned screenshot walkthrough, no audio
-- [AI Usage Declaration](docs/ai-usage-declaration.pdf)
+- [AI Usage Declaration (editable Markdown source)](docs/ai-usage-declaration.md)
+- [AI Usage Declaration (PDF)](docs/ai-usage-declaration.pdf)
 - [Team Contribution Statement](docs/team-contributions.pdf)
 
 Substantial ChatGPT assistance is documented in the declarations. The assigned areas of responsibility describe final review and defense, not individual authorship percentages.
