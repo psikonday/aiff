@@ -42,8 +42,8 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 
 - [Technical report](docs/technical-report.pdf)
 - [Presentation (PowerPoint, 7 slides)](docs/presentation.pptx)
-- [Demo video](docs/demo.mp4): 2:30 captioned screenshot walkthrough, no audio
+- [Demo video](docs/demo.mp4)
 - [AI Usage Declaration](docs/ai-usage-declaration.pdf)
 - [Team Contribution Statement](docs/team-contributions.pdf)
 
-Substantial ChatGPT assistance is documented in the declarations. The assigned areas of responsibility describe final review and defense, not individual authorship percentages.
+
