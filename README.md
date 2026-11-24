@@ -47,3 +47,11 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 - [Team Contribution Statement](docs/team-contributions.pdf)
 
 Substantial ChatGPT assistance is documented in the declarations. The assigned areas of responsibility describe final review and defense, not individual authorship percentages.
+
+## Authorship and provenance
+
+- [Project authorship and team attribution](AUTHORS.md)
+- [Copyright and reuse notice](COPYRIGHT-NOTICE.md)
+- [Project provenance and evidence-preservation record](docs/PROVENANCE.md)
+
+These records document the team attribution already stated above and the repository history observed when they were prepared. They do not assign individual authorship percentages or replace the team's contribution statement.
