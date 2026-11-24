@@ -48,7 +48,7 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 - [AI Usage Declaration (PDF)](docs/ai-usage-declaration.pdf)
 - [Team Contribution Statement](docs/team-contributions.pdf)
 
-Substantial ChatGPT assistance is documented in the declarations. The assigned areas of responsibility describe final review and defense, not individual authorship percentages.
+ChatGPT is disclosed as a supporting tool for implementation refinement, debugging, test assistance and polishing written and presentation materials. The team made the final decisions and remains responsible for reviewing, verifying and explaining the submitted work. The assigned areas of responsibility describe final review and defense, not individual authorship percentages.
 
 ## Authorship and provenance
 
