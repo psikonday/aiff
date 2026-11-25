@@ -48,25 +48,25 @@
       "group": "Bayes",
       "name": "Bayes: law of total probability holds for the predicted reading",
       "status": "PASS",
-      "ms": 0.2
+      "ms": 0.3
     },
     {
       "group": "Search",
       "name": "BFS: start equals target",
       "status": "PASS",
-      "ms": 0.7
+      "ms": 0.3
     },
     {
       "group": "Search",
       "name": "BFS: avoids flagged A and reaches B in six moves",
       "status": "PASS",
-      "ms": 0.4
+      "ms": 0.3
     },
     {
       "group": "Search",
       "name": "BFS: invalid or blocked target is unreachable",
       "status": "PASS",
-      "ms": 0
+      "ms": 0.1
     },
     {
       "group": "Search",
@@ -78,13 +78,13 @@
       "group": "Search",
       "name": "BFS: matches independent shortest-distance oracle on 100 maps",
       "status": "PASS",
-      "ms": 27.9
+      "ms": 33.3
     },
     {
       "group": "Search",
       "name": "Search lab: BFS and A* traces are optimal, DFS is never shorter",
       "status": "PASS",
-      "ms": 86.8
+      "ms": 107.6
     },
     {
       "group": "Search",
@@ -96,19 +96,19 @@
       "group": "Search",
       "name": "Random lots always keep every space reachable",
       "status": "PASS",
-      "ms": 19.9
+      "ms": 19.7
     },
     {
       "group": "MDP",
       "name": "MDP: certain free space has analytical value 28",
       "status": "PASS",
-      "ms": 2.5
+      "ms": 1.8
     },
     {
       "group": "MDP",
       "name": "MDP: certain occupied space recommends exit",
       "status": "PASS",
-      "ms": 0.9
+      "ms": 1.7
     },
     {
       "group": "MDP",
@@ -120,19 +120,19 @@
       "group": "MDP",
       "name": "MDP: no recheck budget removes Check action",
       "status": "PASS",
-      "ms": 0.8
+      "ms": 1
     },
     {
       "group": "MDP",
       "name": "MDP: all alerts make information worth buying",
       "status": "PASS",
-      "ms": 6.5
+      "ms": 6.8
     },
     {
       "group": "MDP",
       "name": "MDP: full Bellman sweep is a fixed point",
       "status": "PASS",
-      "ms": 4.5
+      "ms": 5.5
     },
     {
       "group": "MDP",
@@ -144,61 +144,61 @@
       "group": "MDP",
       "name": "MDP: value is monotone — a more likely free space is never worth less",
       "status": "PASS",
-      "ms": 3.8
+      "ms": 4.7
     },
     {
       "group": "MDP",
       "name": "MDP: a higher check cost never increases the number of rechecks",
       "status": "PASS",
-      "ms": 14.7
+      "ms": 16.2
     },
     {
       "group": "Integration",
       "name": "Integration: all eight initial signal combinations",
       "status": "PASS",
-      "ms": 25.1
+      "ms": 26
     },
     {
       "group": "Integration",
       "name": "Safety: 152 prior/signal scenarios never cross a blocked cell",
       "status": "PASS",
-      "ms": 117.4
+      "ms": 124.5
     },
     {
       "group": "Integration",
       "name": "Recheck: a clear reading can enable a safe route",
       "status": "PASS",
-      "ms": 1.1
+      "ms": 1
     },
     {
       "group": "Integration",
       "name": "Recheck: repeated alerts never lead into likely occupied cells",
       "status": "PASS",
-      "ms": 2.9
+      "ms": 3.1
     },
     {
       "group": "Integration",
       "name": "Custom lots: planner routes never enter walls or likely occupied spaces",
       "status": "PASS",
-      "ms": 44.3
+      "ms": 54.8
     },
     {
       "group": "Simulation",
       "name": "Simulation: same seed gives identical episodes",
       "status": "PASS",
-      "ms": 1.6
+      "ms": 2.4
     },
     {
       "group": "Simulation",
       "name": "Simulation: MDP policy never drives into a likely occupied space",
       "status": "PASS",
-      "ms": 219.7
+      "ms": 254.1
     },
     {
       "group": "Simulation",
       "name": "Simulation: MDP policy earns the highest mean return (4 priors x 2000 episodes)",
       "status": "PASS",
-      "ms": 412.8
+      "ms": 476.9
     }
   ]
 }
