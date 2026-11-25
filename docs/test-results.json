@@ -48,7 +48,7 @@
       "group": "Bayes",
       "name": "Bayes: law of total probability holds for the predicted reading",
       "status": "PASS",
-      "ms": 0.3
+      "ms": 0.1
     },
     {
       "group": "Search",
@@ -60,55 +60,55 @@
       "group": "Search",
       "name": "BFS: avoids flagged A and reaches B in six moves",
       "status": "PASS",
-      "ms": 0.3
+      "ms": 0.2
     },
     {
       "group": "Search",
       "name": "BFS: invalid or blocked target is unreachable",
       "status": "PASS",
-      "ms": 0.1
+      "ms": 0
     },
     {
       "group": "Search",
       "name": "BFS: enclosed start returns no path",
       "status": "PASS",
-      "ms": 0.1
+      "ms": 0
     },
     {
       "group": "Search",
       "name": "BFS: matches independent shortest-distance oracle on 100 maps",
       "status": "PASS",
-      "ms": 33.3
+      "ms": 25.2
     },
     {
       "group": "Search",
       "name": "Search lab: BFS and A* traces are optimal, DFS is never shorter",
       "status": "PASS",
-      "ms": 107.6
+      "ms": 78.8
     },
     {
       "group": "Search",
       "name": "Distance map agrees with BFS path lengths",
       "status": "PASS",
-      "ms": 1
+      "ms": 0.6
     },
     {
       "group": "Search",
       "name": "Random lots always keep every space reachable",
       "status": "PASS",
-      "ms": 19.7
+      "ms": 15.6
     },
     {
       "group": "MDP",
       "name": "MDP: certain free space has analytical value 28",
       "status": "PASS",
-      "ms": 1.8
+      "ms": 2.2
     },
     {
       "group": "MDP",
       "name": "MDP: certain occupied space recommends exit",
       "status": "PASS",
-      "ms": 1.7
+      "ms": 0.8
     },
     {
       "group": "MDP",
@@ -120,67 +120,67 @@
       "group": "MDP",
       "name": "MDP: no recheck budget removes Check action",
       "status": "PASS",
-      "ms": 1
+      "ms": 0.7
     },
     {
       "group": "MDP",
       "name": "MDP: all alerts make information worth buying",
       "status": "PASS",
-      "ms": 6.8
+      "ms": 6
     },
     {
       "group": "MDP",
       "name": "MDP: full Bellman sweep is a fixed point",
       "status": "PASS",
-      "ms": 5.5
+      "ms": 5.6
     },
     {
       "group": "MDP",
       "name": "MDP: residual history is non-increasing and ends below tolerance",
       "status": "PASS",
-      "ms": 4.6
+      "ms": 7.4
     },
     {
       "group": "MDP",
       "name": "MDP: value is monotone — a more likely free space is never worth less",
       "status": "PASS",
-      "ms": 4.7
+      "ms": 4
     },
     {
       "group": "MDP",
       "name": "MDP: a higher check cost never increases the number of rechecks",
       "status": "PASS",
-      "ms": 16.2
+      "ms": 17.4
     },
     {
       "group": "Integration",
       "name": "Integration: all eight initial signal combinations",
       "status": "PASS",
-      "ms": 26
+      "ms": 32.6
     },
     {
       "group": "Integration",
       "name": "Safety: 152 prior/signal scenarios never cross a blocked cell",
       "status": "PASS",
-      "ms": 124.5
+      "ms": 139
     },
     {
       "group": "Integration",
       "name": "Recheck: a clear reading can enable a safe route",
       "status": "PASS",
-      "ms": 1
+      "ms": 1.1
     },
     {
       "group": "Integration",
       "name": "Recheck: repeated alerts never lead into likely occupied cells",
       "status": "PASS",
-      "ms": 3.1
+      "ms": 3.4
     },
     {
       "group": "Integration",
       "name": "Custom lots: planner routes never enter walls or likely occupied spaces",
       "status": "PASS",
-      "ms": 54.8
+      "ms": 63.5
     },
     {
       "group": "Simulation",
@@ -192,13 +192,13 @@
       "group": "Simulation",
       "name": "Simulation: MDP policy never drives into a likely occupied space",
       "status": "PASS",
-      "ms": 254.1
+      "ms": 372.2
     },
     {
       "group": "Simulation",
       "name": "Simulation: MDP policy earns the highest mean return (4 priors x 2000 episodes)",
       "status": "PASS",
-      "ms": 476.9
+      "ms": 766.5
     }
   ]
 }

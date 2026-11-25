@@ -5,13 +5,13 @@
 
   /* ---------------- Team ---------------- */
   const TEAM = [
-    { name: 'Dilnaz', initials: 'DI', color: '#d7e7a3', role: 'Problem, interface & evaluation', lab: 'sim',
+    { name: 'Alnur', initials: 'AL', color: '#d7e7a3', role: 'Problem, interface & evaluation', lab: 'sim',
       items: ['Problem statement and objectives', 'Planner user flow and map editor', 'Monte Carlo simulation lab'], defends: 'Opens the defense and leads the live demo' },
     { name: 'Aruana', initials: 'AR', color: '#f0c9a8', role: 'Search & route validation', lab: 'search',
       items: ['BFS with queue and predecessor map', 'DFS and A* comparison lab', 'Blocked-cell and oracle tests'], defends: 'Explains why BFS finds the shortest route' },
     { name: 'Madina', initials: 'MA', color: '#b9d4ef', role: 'Bayesian inference', lab: 'bayes',
       items: ['Sensor model and assumptions', 'Derivation of 75% and 7.7%', 'Repeated-reading lab'], defends: 'Explains how a reading changes the belief' },
-    { name: 'Alnur', initials: 'AL', color: '#e8d48f', role: 'MDP, Value Iteration & testing', lab: 'mdp',
+    { name: 'Dilnaz', initials: 'DI', color: '#e8d48f', role: 'MDP, Value Iteration & testing', lab: 'mdp',
       items: ['States, actions, rewards, transitions', 'Value Iteration and convergence', 'Automated test suite'], defends: 'Explains the decision and the test results' },
   ];
   $('team-grid').innerHTML = TEAM.map(m => `<article class="card member reveal">
@@ -24,9 +24,9 @@
 
   /* ---------------- Defense mode ---------------- */
   const SEGMENTS = [
-    { title: 'Problem statement & objectives', who: 'Dilnaz', secs: 120, target: 'top' },
-    { title: 'Live demo', who: 'Dilnaz · Aruana', secs: 240, target: 'planner' },
-    { title: 'Three AI topics', who: 'Aruana (BFS) · Madina (Bayes) · Alnur (MDP)', secs: 120, target: 'how' },
+    { title: 'Problem statement & objectives', who: 'Alnur', secs: 120, target: 'top' },
+    { title: 'Live demo', who: 'Alnur · Aruana · Madina · Dilnaz', secs: 240, target: 'planner' },
+    { title: 'Three AI topics', who: 'Aruana (BFS) · Madina (Bayes) · Dilnaz (MDP)', secs: 120, target: 'how' },
     { title: 'Questions & answers', who: 'Everyone answers individually', secs: 180, target: 'team' },
   ];
   const D = { on: false, seg: 0, elapsed: SEGMENTS.map(() => 0), running: false, last: 0, raf: 0 };

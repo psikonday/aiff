@@ -4,7 +4,7 @@ An interactive, explainable parking guide that combines **BFS search**, **Bayesi
 
 Live demo: https://psikonday.github.io/aiff/
 
-Team: Dilnaz, Aruana, Madina and Alnur.
+Team: Alnur, Aruana, Madina and Dilnaz.
 
 ## Run
 
