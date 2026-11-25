@@ -2,6 +2,15 @@
 (function () {
   'use strict';
   const AI = window.ParkingAI;
+  // Guard: if the browser served an outdated cached core.js, explain instead of showing an empty page.
+  if (!AI || typeof AI.findStart !== 'function' || typeof AI.searchTrace !== 'function') {
+    const box = document.createElement('div');
+    box.setAttribute('role', 'alert');
+    box.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;z-index:999;background:#b5524a;color:#fff;padding:16px 20px;border-radius:14px;font:800 14px/1.5 Arial,sans-serif;text-transform:uppercase';
+    box.textContent = 'An old cached version of the scripts was loaded. Press Ctrl+Shift+R (Cmd+Shift+R on Mac) to reload the page.';
+    document.addEventListener('DOMContentLoaded', () => document.body.appendChild(box));
+    throw Error('Outdated js/core.js in browser cache — hard reload required.');
+  }
   const PG = window.PG = {};
   const LABELS = 'ABCDEF';
   const MAX_SPOTS = 6;
