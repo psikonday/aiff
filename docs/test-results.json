@@ -1,91 +1,204 @@
 {
-  "checks": 20,
-  "passed": 20,
+  "checks": 32,
+  "passed": 32,
   "failed": 0,
   "safetyScenarios": 152,
   "randomMaps": 100,
   "shortestPathComparisons": 300,
+  "simulatedEpisodes": 24500,
   "seed": 12345,
   "results": [
     {
+      "group": "Bayes",
       "name": "Bayes: alert posterior equals 0.75",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.1
     },
     {
+      "group": "Bayes",
       "name": "Bayes: clear posterior equals 1/13",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0
     },
     {
+      "group": "Bayes",
       "name": "Bayes: repeated alerts yield 27/29",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0
     },
     {
+      "group": "Bayes",
       "name": "Bayes: contradictory second reading yields 3/11",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0
     },
     {
+      "group": "Bayes",
       "name": "Bayes: endpoints and invalid observations",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.1
     },
     {
+      "group": "Bayes",
+      "name": "Bayes: posterior is order-independent for two readings",
+      "status": "PASS",
+      "ms": 0
+    },
+    {
+      "group": "Bayes",
+      "name": "Bayes: law of total probability holds for the predicted reading",
+      "status": "PASS",
+      "ms": 0.1
+    },
+    {
+      "group": "Search",
       "name": "BFS: start equals target",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.3
     },
     {
+      "group": "Search",
       "name": "BFS: avoids flagged A and reaches B in six moves",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.3
     },
     {
+      "group": "Search",
       "name": "BFS: invalid or blocked target is unreachable",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0
     },
     {
+      "group": "Search",
       "name": "BFS: enclosed start returns no path",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.1
     },
     {
-      "name": "MDP: certain free space has analytical value 28",
-      "status": "PASS"
-    },
-    {
-      "name": "MDP: certain occupied space recommends exit",
-      "status": "PASS"
-    },
-    {
-      "name": "MDP: free unreachable space is not a driving action",
-      "status": "PASS"
-    },
-    {
-      "name": "MDP: no recheck budget removes Check action",
-      "status": "PASS"
-    },
-    {
-      "name": "MDP: all alerts make information worth buying",
-      "status": "PASS"
-    },
-    {
-      "name": "MDP: full Bellman sweep is a fixed point",
-      "status": "PASS"
-    },
-    {
-      "name": "Integration: all eight initial signal combinations",
-      "status": "PASS"
-    },
-    {
-      "name": "Safety: 152 prior/signal scenarios never cross a blocked cell",
-      "status": "PASS"
-    },
-    {
+      "group": "Search",
       "name": "BFS: matches independent shortest-distance oracle on 100 maps",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 20.4
     },
     {
+      "group": "Search",
+      "name": "Search lab: BFS and A* traces are optimal, DFS is never shorter",
+      "status": "PASS",
+      "ms": 59.2
+    },
+    {
+      "group": "Search",
+      "name": "Distance map agrees with BFS path lengths",
+      "status": "PASS",
+      "ms": 0.7
+    },
+    {
+      "group": "Search",
+      "name": "Random lots always keep every space reachable",
+      "status": "PASS",
+      "ms": 14.2
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: certain free space has analytical value 28",
+      "status": "PASS",
+      "ms": 2
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: certain occupied space recommends exit",
+      "status": "PASS",
+      "ms": 1.1
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: free unreachable space is not a driving action",
+      "status": "PASS",
+      "ms": 0.2
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: no recheck budget removes Check action",
+      "status": "PASS",
+      "ms": 0.7
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: all alerts make information worth buying",
+      "status": "PASS",
+      "ms": 5.1
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: full Bellman sweep is a fixed point",
+      "status": "PASS",
+      "ms": 6.2
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: residual history is non-increasing and ends below tolerance",
+      "status": "PASS",
+      "ms": 2.8
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: value is monotone — a more likely free space is never worth less",
+      "status": "PASS",
+      "ms": 2.5
+    },
+    {
+      "group": "MDP",
+      "name": "MDP: a higher check cost never increases the number of rechecks",
+      "status": "PASS",
+      "ms": 8.9
+    },
+    {
+      "group": "Integration",
+      "name": "Integration: all eight initial signal combinations",
+      "status": "PASS",
+      "ms": 16.8
+    },
+    {
+      "group": "Integration",
+      "name": "Safety: 152 prior/signal scenarios never cross a blocked cell",
+      "status": "PASS",
+      "ms": 73
+    },
+    {
+      "group": "Integration",
       "name": "Recheck: a clear reading can enable a safe route",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 0.5
     },
     {
+      "group": "Integration",
       "name": "Recheck: repeated alerts never lead into likely occupied cells",
-      "status": "PASS"
+      "status": "PASS",
+      "ms": 1.6
+    },
+    {
+      "group": "Integration",
+      "name": "Custom lots: planner routes never enter walls or likely occupied spaces",
+      "status": "PASS",
+      "ms": 23.8
+    },
+    {
+      "group": "Simulation",
+      "name": "Simulation: same seed gives identical episodes",
+      "status": "PASS",
+      "ms": 1.3
+    },
+    {
+      "group": "Simulation",
+      "name": "Simulation: MDP policy never drives into a likely occupied space",
+      "status": "PASS",
+      "ms": 167.5
+    },
+    {
+      "group": "Simulation",
+      "name": "Simulation: MDP policy earns the highest mean return (4 priors x 2000 episodes)",
+      "status": "PASS",
+      "ms": 378.2
     }
   ]
 }

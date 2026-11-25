@@ -1,28 +1,456 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mini Smart Parking Guide</title><meta name="description" content="An interactive exploration of a small smart parking system.">
-<style>
-:root{--ink:#182e29;--muted:#697971;--paper:#f6f5ed;--line:#d8ded4;--green:#244d3f;--lime:#d7e7a3;--orange:#e58c5d;--white:#fffef9}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}button,a{font:inherit}button{cursor:pointer}a{color:inherit}header{max-width:1340px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:26px 6%;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.04em;font-size:19px}.brand-mark{display:grid;place-items:center;background:var(--green);color:var(--lime);width:31px;height:31px;border-radius:8px;font-size:18px}nav{display:flex;gap:34px;align-items:center;font-size:13px;font-weight:700}nav a{text-decoration:none}nav a:hover{text-decoration:underline}.nav-cta{border:1px solid var(--ink);border-radius:100px;padding:11px 18px}.wrap{max-width:1340px;margin:auto;padding:0 6%}.hero{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center;padding-top:88px;padding-bottom:92px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:#698075;display:flex;align-items:center;gap:10px}.eyebrow:before{content:'';width:27px;height:2px;background:var(--orange)}h1,h2,h3,p{margin-top:0}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(54px,6.7vw,98px);line-height:.98;letter-spacing:-.065em;margin:22px 0 25px}h1 em{color:#6f9177;font-weight:400}.intro{font-size:17px;line-height:1.7;max-width:485px;color:#53675d}.primary{display:inline-flex;align-items:center;gap:30px;background:var(--green);color:white;border:0;border-radius:100px;padding:16px 22px;text-decoration:none;font-size:13px;font-weight:700;margin-top:20px}.primary:hover{background:#396755}.hero-note{margin:26px 0 0;font-size:12px;color:var(--muted)}.hero-art{background:#e4eadb;border-radius:4px;min-height:450px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.art-label{position:absolute;top:27px;left:30px;font-size:11px;letter-spacing:.16em;font-weight:bold;color:#62786a}.art-tag{position:absolute;right:24px;bottom:24px;background:var(--white);padding:14px 17px;font-size:12px;box-shadow:0 8px 25px #233a2512}.art-tag b{display:block;font-size:17px;margin-top:5px}.art-svg{width:85%;max-width:460px}.ticker{background:var(--green);color:#f4f7eb;padding:21px 6%;display:flex;justify-content:center;gap:clamp(25px,6vw,100px);font-size:12px;letter-spacing:.04em}.ticker span{opacity:.7;margin-right:8px}.section{padding-top:110px;padding-bottom:110px}.section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:43px}.section-head h2,.story h2{font:400 clamp(38px,4.3vw,62px)/1.04 Georgia,serif;letter-spacing:-.045em;margin:16px 0 0}.section-head p{max-width:390px;color:var(--muted);font-size:15px;line-height:1.7;margin:0}.demo{display:grid;grid-template-columns:1.1fr .9fr;background:var(--white);border:1px solid var(--line);box-shadow:0 18px 50px #2e47330a}.map-side{padding:35px;border-right:1px solid var(--line)}.panel-top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.panel-top h3{font-size:15px;margin:0}.panel-top span{font-size:11px;color:var(--muted)}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;max-width:480px;margin:auto}.cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#edf0e8;color:#8b9a8e;font-size:13px;position:relative}.cell.wall{background:#aebcb0;background-image:repeating-linear-gradient(135deg,transparent 0 7px,#9caca0 7px 8px)}.cell.route{background:#d5e5ad}.cell.route:after{content:'';width:8px;height:8px;background:#668961;border-radius:50%}.cell.start{background:var(--green);color:white;font-size:11px;font-weight:700}.cell.spot{background:#f0dfcb;color:#604f40;font-weight:700}.cell.spot.alerted{background:#e5b1a0;color:#713e32}.cell.spot.selected{background:var(--orange);color:#26372d;outline:3px solid #e58c5d;outline-offset:2px}.legend{display:flex;gap:18px;flex-wrap:wrap;margin:23px auto 0;max-width:480px;color:var(--muted);font-size:11px}.legend i{width:9px;height:9px;display:inline-block;margin-right:6px;background:#d5e5ad}.legend .wall-key{background:#aebcb0}.legend .spot-key{background:#e58c5d}.legend .alert-key{background:#e5b1a0}.control-side{padding:35px}.small-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#829087}.control-side h3{font:400 30px Georgia,serif;letter-spacing:-.03em;margin:9px 0 10px}.control-side p{font-size:13px;line-height:1.65;color:var(--muted)}.sensor-list{border-top:1px solid var(--line);margin:25px 0 20px}.sensor-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}.sensor-row strong{font-size:13px;display:block}.sensor-row small{display:block;color:var(--muted);margin-top:4px;font-size:11px}.toggle{border:1px solid #cbd4c9;background:#f3f5ee;color:#577063;padding:8px 11px;border-radius:100px;font-size:11px;min-width:86px}.toggle.alert{background:#fae5d9;color:#9a5132;border-color:#f2d3bf}.result{background:#edf2df;padding:19px;margin-top:23px}.result-top{display:flex;justify-content:space-between;gap:10px}.result strong{font-size:15px}.result p{margin:7px 0 0;font-size:12px;color:#617365}.result .steps{font:400 24px Georgia,serif;white-space:nowrap}.reset{border:0;background:none;padding:0;color:#60786b;font-size:11px;text-decoration:underline;margin-top:15px}.how{background:#e9eee4}.how .section{padding-top:100px;padding-bottom:100px}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}.how-item{border-top:1px solid #aebfb0;padding-top:20px}.num{font:italic 20px Georgia,serif;color:#85a08a}.how-item h3{font:400 26px Georgia,serif;letter-spacing:-.03em;margin:30px 0 14px}.how-item p{color:#617469;font-size:14px;line-height:1.7;max-width:320px}.story{display:grid;grid-template-columns:1fr 1fr;gap:12%;align-items:start}.story p{color:#617469;font-size:15px;line-height:1.8;margin:14px 0}.formula{border-left:3px solid var(--orange);padding:3px 0 3px 22px;margin-top:27px;color:var(--ink)!important;font-size:14px!important}.foot{border-top:1px solid var(--line);padding:29px 0;display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.foot strong{color:var(--ink)}@media(max-width:760px){header{padding:20px 6%}nav a:not(.nav-cta){display:none}nav{gap:0}.hero{grid-template-columns:1fr;gap:40px;padding-top:62px;padding-bottom:60px}.hero-art{min-height:320px}.ticker{justify-content:space-between;gap:10px;font-size:10px}.ticker span{display:none}.section{padding-top:70px;padding-bottom:70px}.section-head{display:block}.section-head p{margin-top:20px}.demo{grid-template-columns:1fr}.map-side{border-right:0;border-bottom:1px solid var(--line);padding:22px}.control-side{padding:25px 22px}.how .section{padding-top:70px;padding-bottom:70px}.how-grid{grid-template-columns:1fr;gap:28px}.how-item h3{margin-top:16px}.story{grid-template-columns:1fr;gap:24px}.foot{gap:20px;flex-wrap:wrap}}@media(max-width:390px){.ticker{font-size:9px}.hero-art{min-height:260px}}
-
-button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #386c99;outline-offset:4px}.cell{border:0;border-radius:2px;font:inherit;font-size:15px}.cell:disabled{cursor:default;opacity:1}.cell.car{box-shadow:inset 0 0 0 4px #183e32}.cell.car:before{content:'●';position:absolute;font-size:24px;color:#183e32}.scenario-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.scenario-bar button,.secondary{border:1px solid #abbcaf;background:#fffef9;color:#244d3f;padding:11px 15px;border-radius:8px;font-size:14px}.scenario-bar button:hover,.secondary:hover{background:#e4ecd7}.secondary{margin-top:14px}.secondary:disabled{opacity:.45;cursor:not-allowed}.map-help{font-size:14px;color:#5b7163;margin:18px 0}.prior-label{display:flex;justify-content:space-between;gap:12px;font-size:14px}input[type=range]{width:100%;accent-color:#244d3f;margin-top:15px}.explanation{padding:25px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:700;font-size:18px}.explanation p{font-size:14px;line-height:1.65;color:#53675d}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}th,td{padding:14px;border-bottom:1px solid #d8ded4;vertical-align:top}th{background:#e9eee4}pre{white-space:pre-wrap;font-size:13px;line-height:1.6;color:#53675d}.resources{padding-bottom:70px}.resources h2{font:400 38px Georgia,serif}.resources p{line-height:1.7}.resource-links{display:flex;flex-wrap:wrap;gap:18px}.resource-links a{font-size:15px;text-underline-offset:4px}.control-side p,.how-item p,.story p{font-size:16px}.sensor-row strong,.toggle{font-size:14px}.sensor-row small,.legend{font-size:12px}.panel-top span{font-size:12px}.result p{font-size:14px}.eyebrow,.small-label{font-size:12px}.hero-note{font-size:13px}.art-label{font-size:12px}.legend{gap:12px}.section{scroll-margin-top:20px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* Bold uppercase interface, requested by the project team. */
-body{text-transform:uppercase;font-family:"Arial Black",Arial,Helvetica,sans-serif;font-weight:700}h1,h2,h3,.section-head h2,.story h2,.control-side h3,.how-item h3,.resources h2,.result .steps{font-family:"Arial Black",Arial,Helvetica,sans-serif;font-weight:900;font-style:normal;letter-spacing:-.045em}h1{font-size:clamp(46px,6vw,80px);line-height:1.03}h1 em{font-weight:900;font-style:normal}.section-head h2,.story h2{font-size:clamp(32px,3.8vw,52px)}.control-side h3{font-size:27px}.how-item h3{font-size:24px}button,input,a,summary{font-weight:800;text-transform:uppercase}.intro{font-size:16px}.eyebrow,.small-label,.art-label{letter-spacing:.08em}.cell{font-weight:900}.sensor-row small,.legend,.explanation p,.map-help,.hero-note{font-weight:700}.sensor-row{gap:8px}.toggle{min-width:96px}.result-top{flex-wrap:wrap}.foot{line-height:1.6}svg text{font-weight:900}@media(max-width:760px){h1{font-size:clamp(42px,10vw,65px)}.brand{font-size:16px}.nav-cta{padding:10px 12px;font-size:11px}.section-head h2{font-size:34px}.ticker{font-size:9px;letter-spacing:0}.control-side h3{font-size:25px}.prior-label{font-size:12px}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini Smart Parking Guide</title>
+<meta name="description" content="An interactive parking guide that combines BFS search, Bayesian inference and a belief-state MDP solved with Value Iteration.">
+<meta name="theme-color" content="#244d3f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23244d3f'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial' font-weight='900' font-size='19' text-anchor='middle' fill='%23d7e7a3'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>try{var t=localStorage.getItem('pg-theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body>
-<header><a class="brand" href="#top"><span class="brand-mark">P</span> PARK / GUIDE</a><nav><a href="#demo">The demo</a><a href="#how">How it works</a><a class="nav-cta" href="#demo">Explore the map ↗</a></nav></header>
+<a class="skip-link" href="#planner">Skip to the planner</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span class="brand-mark">P</span> PARK / GUIDE</a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#planner">Planner</a>
+      <a href="#how">How it works</a>
+      <a href="#labs">Algorithm labs</a>
+      <a href="#results">Results</a>
+      <a href="#team">Team</a>
+    </nav>
+    <div class="header-tools">
+      <button class="pill-btn" id="defense-toggle" type="button" aria-pressed="false">⏱ <span class="long">Defense mode</span></button>
+      <button class="icon-btn" id="shortcuts-open" type="button" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">⌘</button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Light / dark">◐</button>
+    </div>
+  </div>
+  <div class="progress-bar" id="scroll-progress"></div>
+</header>
+
 <main id="top">
-<section class="hero wrap"><div><div class="eyebrow">A small project with a practical idea</div><h1>A better way<br>to <em>find a spot.</em></h1><p class="intro">What if a parking guide could think before you drive? This little project combines a map, a sensor reading and a bit of probability to help make the next move.</p><a class="primary" href="#demo">Try the parking guide <span>↗</span></a><p class="hero-note">BFS · Bayesian inference · MDP with Value Iteration</p></div><div class="hero-art" aria-hidden="true"><div class="art-label">A LITTLE LESS CIRCLING.</div><svg class="art-svg" viewBox="0 0 480 380" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="54" y="39" width="372" height="302" rx="10" fill="#F8F8F0"/><rect x="128.4" y="99.4" width="74.4" height="60.4" fill="#B7C8B7"/><rect x="202.8" y="99.4" width="74.4" height="60.4" fill="#B7C8B7"/><rect x="202.8" y="220.2" width="74.4" height="60.4" fill="#B7C8B7"/><rect x="277.2" y="220.2" width="74.4" height="60.4" fill="#B7C8B7"/><rect x="351.6" y="39" width="74.4" height="60.4" fill="#E5B1A0"/><rect x="351.6" y="159.8" width="74.4" height="60.4" fill="#E58C5D"/><rect x="351.6" y="280.6" width="74.4" height="60.4" fill="#EDD7C4"/><path d="M128.4 39v302M202.8 39v302M277.2 39v302M351.6 39v302M54 99.4h372M54 159.8h372M54 220.2h372M54 280.6h372" stroke="#DCE4D5"/><path d="M91.2 69.2H314.4V190H388.8" stroke="#789F6A" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 12"/><circle cx="388.8" cy="190" r="9" fill="#244D3F"/><rect x="65.2" y="53.2" width="52" height="32" rx="12" fill="#244D3F"/><path d="M76.2 60.2h30l5 7v9h-40v-9l5-7Z" fill="#D7E7A3"/><circle cx="79.2" cy="76.2" r="3" fill="#244D3F"/><circle cx="103.2" cy="76.2" r="3" fill="#244D3F"/><text x="383" y="75" fill="#713E32" font-family="Arial" font-weight="bold" font-size="15">A</text><text x="383" y="315" fill="#876B58" font-family="Arial" font-weight="bold" font-size="15">C</text></svg><div class="art-tag">EXAMPLE ROUTE<b>Space B · 6 steps</b></div></div></section>
-<div class="ticker"><div><span>01 /</span> Read the map</div><div><span>02 /</span> Check the signal</div><div><span>03 /</span> Choose a route</div></div>
-<section class="section wrap" id="demo"><div class="section-head"><div><div class="eyebrow">The interactive guide</div><h2>Let's find a place to park.</h2></div><p>Explore a route, inspect a probability and see why the planner chose its next action. All sensor readings are simulated.</p></div>
-<div class="scenario-bar" aria-label="Example scenarios"><button data-scenario="original">Original example</button><button data-scenario="clear">All clear</button><button data-scenario="far">Only C clear</button><button data-scenario="uncertain">All alerts</button><button data-scenario="blocked">Blocked exit</button></div>
-<div class="demo"><div class="map-side"><div class="panel-top"><h3>Parking map</h3><span>5 × 5 grid</span></div><div id="map" class="map" aria-label="Parking map"></div><p class="map-help">Click a road cell to add or remove an obstacle.</p><div class="legend"><span><i></i>Route</span><span><i class="wall-key"></i>Obstacle</span><span><i class="spot-key"></i>Destination</span><span><i class="alert-key"></i>Likely occupied</span></div><button class="secondary" id="animate">Preview drive</button></div>
-<div class="control-side"><div class="small-label">Simulated sensors</div><h3>What should we do next?</h3><label class="prior-label" for="prior">Starting occupancy probability <strong id="prior-value">40%</strong></label><input type="range" id="prior" min="5" max="95" step="5" value="40"><div class="sensor-list" id="sensors"></div><div class="result" aria-live="polite"><div class="result-top"><strong id="resultTitle"></strong><span class="steps" id="resultSteps"></span></div><p id="resultText"></p></div><div id="recheck-controls" hidden><p>Simulate a second reading:</p><button class="secondary" data-reading="alert">Another alert</button><button class="secondary" data-reading="clear">No alert this time</button></div><button class="reset" id="reset">Reset to original readings</button></div></div>
-<details class="explanation" open><summary>Show the decision calculation</summary><p>Value Iteration compares Drive, Check, Skip and Exit. Unavailable actions are omitted from the list. Driving is disabled at 50% occupancy or higher. Beliefs are rounded to 1% for planning; the displayed probabilities are unrounded.</p><div class="table-scroll"><table><thead><tr><th>Space</th><th>Occupancy</th><th>Steps</th><th>Action</th><th>Expected discounted values</th></tr></thead><tbody id="decision-table"></tbody></table></div><p id="solver"></p><button class="secondary" id="export">Export scenario JSON</button><pre id="event-log" aria-live="polite"></pre></details></section>
-<section class="how" id="how"><div class="wrap section"><div class="section-head"><div><div class="eyebrow">Under the hood</div><h2>Three ideas, one decision.</h2></div><p>The guide is a simple model, but each part has a distinct job.</p></div><div class="how-grid"><article class="how-item"><span class="num">01</span><h3>Find the shortest path</h3><p>Breadth-first search explores the grid one step at a time, avoiding obstacles and likely occupied spaces until it reaches the chosen space.</p></article><article class="how-item"><span class="num">02</span><h3>Update the odds</h3><p>A Bayesian calculation combines a 40% starting chance of occupancy with the sensor reading. An alert raises that estimate to 75%.</p></article><article class="how-item"><span class="num">03</span><h3>Make the call</h3><p>A finite belief-state MDP compares four actions using transition probabilities, rewards and a discount factor. Value Iteration accounts for future outcomes: parking successfully, failing, checking again, skipping a space or leaving.</p></article></div></div></section>
-<section class="section wrap story"><div><div class="eyebrow">A note on the model</div><h2>Simple by design.<br>Useful to explore.</h2></div><div><p>This is a classroom-sized simulation, not a live parking service. The map, sensor readings and rewards are examples, chosen to show how a system can make a decision when the information is uncertain.</p><p>In the original scenario, space A has a 75% occupancy estimate. The planner skips it and selects B, reached in six steps. If all spaces send alerts, another reading may be worth taking before leaving.</p><p class="formula"><strong>Try it yourself:</strong> switch space A to “No alert” and see the route change.</p></div></section>
-<section class="wrap resources" id="project"><h2>Project materials</h2><p>Source code, reproducible tests and the model assumptions behind this demonstration.</p><div class="resource-links"><a href="https://github.com/psikonday/aiff">GitHub repository</a><a href="docs/technical-report.pdf">Technical report</a><a href="docs/presentation.pptx">Presentation (PPTX)</a><a href="docs/demo.mp4">Demo video</a><a href="docs/ai-usage-declaration.pdf">AI Usage Declaration</a><a href="docs/team-contributions.pdf">Team Contributions</a></div></section></main><footer class="wrap"><div class="foot"><strong>PARK / GUIDE</strong><span>A small experiment in smarter parking.</span><a href="#top">Back to top ↑</a></div></footer>
-<script src="js/core.js"></script><script src="js/app.js"></script></body></html>
+<!-- ============ HERO ============ -->
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">AI Fundamentals · final team project</div>
+    <h1>A better way<br>to <em>find a spot.</em></h1>
+    <p class="intro">Drivers lose time circling for parking because sensors are noisy and the closest space is not always the best bet. Our guide reads the lot, weighs every sensor reading with Bayes' rule, and plans its next move with Value Iteration — then shows you exactly why.</p>
+    <div class="hero-actions">
+      <a class="primary" href="#planner">Open the planner <span>↗</span></a>
+      <a class="ghost" href="#labs">Explore the algorithms</a>
+    </div>
+    <div class="hero-stats" aria-label="Project in numbers">
+      <div><b>3</b><span>AI topics</span></div>
+      <div><b id="stat-states">606</b><span>MDP states</span></div>
+      <div><b id="stat-tests">32</b><span>Automated tests</span></div>
+      <div><b>4</b><span>Team members</span></div>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="art-label">A LITTLE LESS CIRCLING.</div>
+    <svg class="art-svg" viewBox="0 0 480 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect class="lot" x="54" y="39" width="372" height="302" rx="10"/>
+      <rect class="wallr" x="128.4" y="99.4" width="74.4" height="60.4"/><rect class="wallr" x="202.8" y="99.4" width="74.4" height="60.4"/>
+      <rect class="wallr" x="202.8" y="220.2" width="74.4" height="60.4"/><rect class="wallr" x="277.2" y="220.2" width="74.4" height="60.4"/>
+      <rect class="spot-a" x="351.6" y="39" width="74.4" height="60.4"/><rect class="spot-b" x="351.6" y="159.8" width="74.4" height="60.4"/><rect class="spot-c" x="351.6" y="280.6" width="74.4" height="60.4"/>
+      <path class="grid-line" d="M128.4 39v302M202.8 39v302M277.2 39v302M351.6 39v302M54 99.4h372M54 159.8h372M54 220.2h372M54 280.6h372"/>
+      <circle class="sensor-ring" cx="388.8" cy="69.2" r="14" stroke-width="2"/><circle class="sensor-ring r2" cx="388.8" cy="69.2" r="14" stroke-width="2"/>
+      <path class="route-line" d="M91.2 69.2H314.4V190H388.8" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="388.8" cy="190" r="9" fill="#244D3F"/>
+      <g class="hero-car"><rect x="-24" y="-15" width="48" height="30" rx="10" fill="#244D3F"/><path d="M-12 -9h18l6 6v8h-30v-8z" fill="#D7E7A3"/><circle cx="-12" cy="12" r="3.4" fill="#10201a"/><circle cx="12" cy="12" r="3.4" fill="#10201a"/><circle cx="-12" cy="-12" r="3.4" fill="#10201a"/><circle cx="12" cy="-12" r="3.4" fill="#10201a"/></g>
+      <text x="383" y="75" fill="#713E32" font-size="15">A</text><text x="383" y="196" fill="#26372d" font-size="15">B</text><text x="383" y="315" fill="#876B58" font-size="15">C</text>
+    </svg>
+    <div class="art-tag">A: SENSOR ALERT · 75% TAKEN<b>Space B · 6 steps</b></div>
+  </div>
+</section>
+
+<div class="ticker"><div><span>01 /</span> Read the map</div><div><span>02 /</span> Weigh the signal</div><div><span>03 /</span> Plan the move</div><div><span>04 /</span> Drive</div></div>
+
+<!-- ============ PLANNER ============ -->
+<section class="section wrap" id="planner">
+  <div class="section-head">
+    <div><div class="eyebrow">The interactive planner</div><h2>Let's find a place to park.</h2></div>
+    <p>Draw your own lot, flip sensor readings and watch the plan update instantly. Every number on the screen comes from the same code our tests check. All sensor readings are simulated.</p>
+  </div>
+
+  <div class="planner-toolbar">
+    <div class="toolbar" aria-label="Example scenarios">
+      <span class="label-sm">Scenario</span>
+      <button class="btn small" data-scenario="original">Original</button>
+      <button class="btn small" data-scenario="clear">All clear</button>
+      <button class="btn small" data-scenario="far">Only C clear</button>
+      <button class="btn small" data-scenario="uncertain">All alerts</button>
+      <button class="btn small" data-scenario="blocked">Blocked exit</button>
+      <button class="btn small" data-scenario="random">🎲 Random lot</button>
+    </div>
+    <div class="toolbar">
+      <button class="btn small" id="undo" title="Undo (Ctrl+Z)">↶ Undo</button>
+      <button class="btn small" id="share">🔗 Share link</button>
+    </div>
+  </div>
+
+  <div class="demo card">
+    <div class="map-side">
+      <div class="panel-top">
+        <h3>Parking map</h3>
+        <div class="toolbar">
+          <label class="label-sm" for="grid-size">Size</label>
+          <select id="grid-size"><option value="5">5 × 5</option><option value="7">7 × 7</option><option value="9">9 × 9</option><option value="11">11 × 11</option></select>
+        </div>
+      </div>
+      <div class="map-tools" role="toolbar" aria-label="Map editing tool">
+        <span class="label-sm">Brush</span>
+        <div class="seg" id="brush">
+          <button type="button" data-brush="wall" aria-pressed="true">▨ Obstacle</button>
+          <button type="button" data-brush="spot" aria-pressed="false">P Space</button>
+          <button type="button" data-brush="start" aria-pressed="false">⚑ Entrance</button>
+          <button type="button" data-brush="road" aria-pressed="false">⌫ Erase</button>
+        </div>
+        <button class="btn small" id="heat-toggle" aria-pressed="false" title="Show BFS distance from the entrance (H)">Distances</button>
+      </div>
+      <div class="map-wrap" id="map-wrap">
+        <div id="map" class="map" role="grid" aria-label="Parking map"></div>
+        <div class="car" id="car" aria-hidden="true"></div>
+      </div>
+      <p class="map-help">Click or drag across cells to paint. Up to 6 spaces, labelled A–F from nearest to farthest.</p>
+      <div class="legend">
+        <span><i style="background:var(--route)"></i>Route</span><span><i style="background:var(--wall)"></i>Obstacle</span>
+        <span><i style="background:var(--orange)"></i>Destination</span><span><i style="background:var(--alert)"></i>Likely occupied</span>
+        <span><i style="background:var(--green)"></i>Entrance</span>
+      </div>
+      <div class="map-actions">
+        <button class="btn solid" id="animate">▶ Preview drive</button>
+        <button class="btn" id="autopilot" title="Run the whole decision loop with simulated readings">⟳ Autopilot</button>
+      </div>
+    </div>
+
+    <div class="control-side">
+      <div>
+        <div class="label-sm">Simulated sensors</div>
+        <h3>What should we do next?</h3>
+      </div>
+      <div class="field">
+        <div class="field-row"><label for="prior">Starting occupancy probability</label><output id="prior-value">40%</output></div>
+        <input type="range" id="prior" min="5" max="95" step="5" value="40">
+      </div>
+      <div class="sensor-list" id="sensors" aria-label="Sensor readings per space"></div>
+      <div class="result" id="result" aria-live="polite">
+        <div class="result-top"><strong id="resultTitle"></strong><span class="steps" id="resultSteps"></span></div>
+        <p id="resultText"></p>
+        <div class="qbars" id="qbars" aria-label="Expected value of each action"></div>
+      </div>
+      <div class="recheck" id="recheck-controls" hidden>
+        <span>Simulate a second reading:</span>
+        <button class="btn small" data-reading="alert">Another alert</button>
+        <button class="btn small" data-reading="clear">No alert this time</button>
+        <button class="btn small" data-reading="random">🎲 Random</button>
+      </div>
+      <div class="inline-links">
+        <button class="linkish" id="reset">Reset readings</button>
+        <button class="linkish" id="export">Export scenario JSON</button>
+        <label class="linkish" for="import" style="cursor:pointer">Import JSON</label><input type="file" id="import" accept="application/json,.json" hidden>
+        <a class="linkish" href="#lab-mdp" data-open-lab="mdp">Tune rewards →</a>
+      </div>
+    </div>
+  </div>
+
+  <details class="explanation" id="calc">
+    <summary>Show the decision calculation</summary>
+    <div class="explanation-body">
+      <p>Value Iteration compares Drive, Check, Skip and Exit for every candidate in order. Unavailable actions are omitted. Driving is disabled at 50% occupancy or higher. Beliefs are rounded to 1% for planning; the displayed probabilities are unrounded.</p>
+      <div class="table-scroll"><table><thead><tr><th>Space</th><th class="num">Occupancy</th><th class="num">Steps</th><th>Action</th><th>Expected discounted values</th></tr></thead><tbody id="decision-table"></tbody></table></div>
+      <p id="solver" class="mono"></p>
+      <div class="label-sm" style="margin:16px 0 8px">Event log</div>
+      <pre class="log" id="event-log" aria-live="polite"></pre>
+    </div>
+  </details>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="band" id="how">
+  <div class="wrap section">
+    <div class="section-head">
+      <div><div class="eyebrow">Under the hood</div><h2>Three ideas, one decision.</h2></div>
+      <p>Each course topic has a distinct job. Search finds where we can go, Bayes estimates what we will find there, and the MDP decides what to do about it.</p>
+    </div>
+    <div class="how-grid">
+      <article class="how-item">
+        <span class="num">01 · Week 2 · Uninformed search</span>
+        <h3>Find the shortest path</h3>
+        <div class="owner"><span class="avatar" style="background:#f0c9a8">AR</span>Aruana · search &amp; routes</div>
+        <p>Breadth-first search expands the grid layer by layer using a FIFO queue and a predecessor map. Because every move costs one step, the first time it reaches a space it has found a shortest route. Obstacles and spaces that are likely occupied are never entered.</p>
+        <div class="formula-box">queue ← [start]; while queue: cell ← pop_front()</div>
+        <a class="btn small" href="#labs" data-open-lab="search">Open the search lab →</a>
+      </article>
+      <article class="how-item">
+        <span class="num">02 · Week 6 · Bayesian inference</span>
+        <h3>Update the odds</h3>
+        <div class="owner"><span class="avatar" style="background:#b9d4ef">MA</span>Madina · probability</div>
+        <p>A sensor is right 90% of the time when a space is taken, but also raises a false alarm 20% of the time. Bayes' rule combines this with a 40% prior: one alert lifts the estimate to 75%; a quiet sensor drops it to 7.7%.</p>
+        <div class="formula-box">P(occ | alert) = 0.9·0.4 / (0.9·0.4 + 0.2·0.6) = 0.75</div>
+        <a class="btn small" href="#labs" data-open-lab="bayes">Open the Bayes lab →</a>
+      </article>
+      <article class="how-item">
+        <span class="num">03 · Week 5 · MDP &amp; Value Iteration</span>
+        <h3>Make the call</h3>
+        <div class="owner"><span class="avatar" style="background:#e8d48f">AL</span>Alnur · planning &amp; tests</div>
+        <p>A finite belief-state MDP weighs four actions — Drive, Check again, Skip, Exit — using rewards, a discount factor and Bayes-derived transitions. Bellman sweeps repeat until values stop changing, giving the best action for every belief.</p>
+        <div class="formula-box">V(s) ← max<sub>a</sub> [ R(s,a) + γ Σ P(s′|s,a) V(s′) ]</div>
+        <a class="btn small" href="#labs" data-open-lab="mdp">Open the value iteration lab →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LABS ============ -->
+<section class="section wrap" id="labs">
+  <div class="section-head">
+    <div><div class="eyebrow">Algorithm labs</div><h2>Open each algorithm up.</h2></div>
+    <p>Each lab runs on the lot you built in the planner. Step through the search, play with the sensor model, tune the rewards, then put the policy to the test in thousands of simulated drives.</p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Algorithm labs">
+    <button class="tab" role="tab" id="tab-search" aria-controls="lab-search" aria-selected="true" data-lab="search"><span class="avatar" style="background:#f0c9a8">AR</span><span>Search<br><small>BFS · DFS · A*</small></span></button>
+    <button class="tab" role="tab" id="tab-bayes" aria-controls="lab-bayes" aria-selected="false" data-lab="bayes"><span class="avatar" style="background:#b9d4ef">MA</span><span>Bayes<br><small>Sensor model</small></span></button>
+    <button class="tab" role="tab" id="tab-mdp" aria-controls="lab-mdp" aria-selected="false" data-lab="mdp"><span class="avatar" style="background:#e8d48f">AL</span><span>Value iteration<br><small>Policy &amp; rewards</small></span></button>
+    <button class="tab" role="tab" id="tab-sim" aria-controls="lab-sim" aria-selected="false" data-lab="sim"><span class="avatar" style="background:#d7e7a3">DI</span><span>Simulation<br><small>Monte Carlo</small></span></button>
+  </div>
+
+  <!-- Search lab -->
+  <div class="lab card" id="lab-search" role="tabpanel" aria-labelledby="tab-search">
+    <div class="lab-col">
+      <div class="label-sm">Lab 01 · uninformed vs informed search</div>
+      <h3>Watch the frontier grow</h3>
+      <p class="lead">BFS uses a queue, DFS a stack and A* a priority queue ordered by steps so far plus the Manhattan distance to the goal. Same map, same goal — compare how many cells each one expands.</p>
+      <div class="lab-controls two">
+        <div class="field"><span class="label-sm">Algorithm</span>
+          <div class="seg" id="search-algo"><button data-algo="bfs" aria-pressed="true">BFS</button><button data-algo="dfs" aria-pressed="false">DFS</button><button data-algo="astar" aria-pressed="false">A*</button></div>
+        </div>
+        <div class="field"><label class="label-sm" for="search-target">Goal space</label><select id="search-target"></select></div>
+        <div class="field"><div class="field-row"><label class="label-sm" for="search-speed">Speed</label><span class="val" id="search-speed-val">8/s</span></div><input type="range" id="search-speed" min="1" max="30" value="8"></div>
+        <label class="field" style="align-content:end"><span><input type="checkbox" id="search-avoid" checked> Avoid likely occupied spaces</span></label>
+      </div>
+      <div class="toolbar">
+        <button class="btn solid" id="search-play">▶ Play</button>
+        <button class="btn" id="search-step">Step →</button>
+        <button class="btn" id="search-end">⇥ Finish</button>
+        <button class="btn" id="search-reset">↺ Reset</button>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="search-expanded">0</b><span>Expanded</span></div>
+        <div class="stat"><b id="search-frontier-size">1</b><span>Frontier</span></div>
+        <div class="stat"><b id="search-length">—</b><span>Path length</span></div>
+      </div>
+      <div class="label-sm" id="search-frontier-label">Queue (next out first)</div>
+      <div class="frontier-list" id="search-frontier" aria-live="polite"></div>
+      <pre class="pseudo" id="search-pseudo"></pre>
+    </div>
+    <div class="lab-col">
+      <div class="map-wrap"><div class="map" id="search-map" aria-label="Search visualisation"></div></div>
+      <div class="legend"><span><i style="background:var(--visited)"></i>Expanded</span><span><i style="box-shadow:inset 0 0 0 2px var(--frontier)"></i>Frontier</span><span><i style="background:color-mix(in srgb,var(--orange) 45%,var(--road))"></i>Current</span><span><i style="background:var(--route)"></i>Final path</span></div>
+      <div class="label-sm" style="margin:24px 0 8px">Head-to-head on this map</div>
+      <div class="table-scroll"><table><thead><tr><th>Algorithm</th><th class="num">Expanded</th><th class="num">Max frontier</th><th class="num">Path</th><th>Optimal?</th></tr></thead><tbody id="search-compare"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- Bayes lab -->
+  <div class="lab card" id="lab-bayes" role="tabpanel" aria-labelledby="tab-bayes" hidden>
+    <div class="lab-col">
+      <div class="label-sm">Lab 02 · conditional probability</div>
+      <h3>How much should one beep move us?</h3>
+      <p class="lead">Each square is one of 200 imagined parking spaces. Red ones are taken, green ones are free; a dot marks a sensor alert. Among the dotted squares, the share that is red <em>is</em> the posterior. The sensor settings here are shared with the planner.</p>
+      <div class="lab-controls">
+        <div class="field"><div class="field-row"><label for="bayes-prior">Prior P(occupied)</label><output id="bayes-prior-val"></output></div><input type="range" id="bayes-prior" min="1" max="99" value="40"></div>
+        <div class="field"><div class="field-row"><label for="bayes-sens">Sensitivity P(alert | occupied)</label><output id="bayes-sens-val"></output></div><input type="range" id="bayes-sens" min="50" max="99" value="90"></div>
+        <div class="field"><div class="field-row"><label for="bayes-fp">False-alarm rate P(alert | free)</label><output id="bayes-fp-val"></output></div><input type="range" id="bayes-fp" min="1" max="50" value="20"></div>
+      </div>
+      <div class="seg" id="bayes-view"><button data-view="alert" aria-pressed="true">If it alerts</button><button data-view="clear" aria-pressed="false">If it stays quiet</button></div>
+      <div class="freq-grid" id="freq-grid" aria-hidden="true"></div>
+      <div class="legend-inline"><span><i class="dot" style="background:color-mix(in srgb,var(--exit) 55%,var(--surface-2))"></i>Occupied</span><span><i class="dot" style="background:color-mix(in srgb,var(--drive) 35%,var(--surface-2))"></i>Free</span><span><i class="dot" style="background:var(--ink)"></i>Matches the reading</span></div>
+      <div class="formula" id="bayes-formula"></div>
+    </div>
+    <div class="lab-col">
+      <div class="label-sm">Repeated readings</div>
+      <h3>Keep listening</h3>
+      <p class="lead">Readings are conditionally independent given the true state, so each posterior becomes the next prior. Add readings by hand, or let a sensor watching a truly occupied or truly free space report on its own.</p>
+      <div class="toolbar">
+        <button class="btn small" id="seq-alert">+ Alert</button>
+        <button class="btn small" id="seq-clear">+ No alert</button>
+        <button class="btn small" id="seq-occ">🎲 Taken space ×10</button>
+        <button class="btn small" id="seq-free">🎲 Free space ×10</button>
+        <button class="btn small" id="seq-reset">↺ Reset</button>
+      </div>
+      <div class="reading-chips" id="seq-chips"></div>
+      <svg class="chart" id="seq-chart" viewBox="0 0 460 240" role="img" aria-label="Posterior after each reading"></svg>
+      <div class="stat-row">
+        <div class="stat"><b id="seq-post">40%</b><span>Current belief</span></div>
+        <div class="stat"><b id="seq-n">0</b><span>Readings</span></div>
+        <div class="stat"><b id="seq-verdict">—</b><span>Planner treats as</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MDP lab -->
+  <div class="lab card" id="lab-mdp" role="tabpanel" aria-labelledby="tab-mdp" hidden>
+    <div class="lab-col">
+      <div class="label-sm">Lab 03 · Markov decision process</div>
+      <h3>Tune the rewards, watch the policy shift</h3>
+      <p class="lead">These settings feed the same solver the planner uses, so the recommendation above changes with them. The map shows the best action for every belief value of every candidate space.</p>
+      <div class="lab-controls two" id="mdp-controls"></div>
+      <div class="toolbar"><button class="btn small" id="mdp-reset">↺ Course defaults</button><span class="muted" style="font-size:11px" id="mdp-info"></span></div>
+      <div class="label-sm" style="margin-top:22px">Bellman residual per sweep (log scale)</div>
+      <svg class="chart" id="mdp-convergence" viewBox="0 0 460 170" role="img" aria-label="Convergence of value iteration"></svg>
+    </div>
+    <div class="lab-col">
+      <div class="label-sm">Optimal policy map</div>
+      <div class="legend-inline"><span><i class="dot" style="background:var(--drive)"></i>Drive</span><span><i class="dot" style="background:var(--check)"></i>Check</span><span><i class="dot" style="background:var(--skip)"></i>Skip</span><span><i class="dot" style="background:var(--exit)"></i>Exit</span><span>○ current belief</span></div>
+      <svg class="chart policy-map" id="mdp-policy" viewBox="0 0 460 200" role="img" aria-label="Best action by belief"></svg>
+      <div class="field-row" style="margin-top:22px"><span class="label-sm">Value function V(belief), recheck available</span><span class="label-sm" id="mdp-sweep-label"></span></div>
+      <svg class="chart" id="mdp-values" viewBox="0 0 460 220" role="img" aria-label="Value of each candidate by belief"></svg>
+      <div class="field"><div class="field-row"><label for="mdp-sweep">Replay the sweeps</label><span class="val" id="mdp-sweep-val"></span></div><input type="range" id="mdp-sweep" min="1" max="5" value="5"></div>
+    </div>
+  </div>
+
+  <!-- Simulation lab -->
+  <div class="lab card" id="lab-sim" role="tabpanel" aria-labelledby="tab-sim" hidden>
+    <div class="lab-col">
+      <div class="label-sm">Lab 04 · Monte Carlo evaluation</div>
+      <h3>Does planning actually pay off?</h3>
+      <p class="lead">We hide a random true state for every space, generate noisy readings from the sensor model, and let three drivers play the same episodes: our MDP policy, a driver who trusts the first reading, and one who ignores the sensors.</p>
+      <div class="lab-controls two">
+        <div class="field"><div class="field-row"><label for="sim-prior">True occupancy rate</label><output id="sim-prior-val"></output></div><input type="range" id="sim-prior" min="5" max="95" step="5" value="40"></div>
+        <div class="field"><label class="label-sm" for="sim-episodes">Episodes per driver</label><select id="sim-episodes"><option>200</option><option selected>1000</option><option>5000</option></select></div>
+        <div class="field"><label class="label-sm" for="sim-seed">Random seed</label><input type="number" id="sim-seed" value="42" min="0"></div>
+      </div>
+      <div class="toolbar"><button class="btn solid" id="sim-run">▶ Run comparison</button><button class="btn" id="sim-sweep">Sweep all priors</button></div>
+      <div class="bar-groups" id="sim-bars"></div>
+      <svg class="chart" id="sim-sweep-chart" viewBox="0 0 460 230" role="img" aria-label="Mean return by prior" hidden></svg>
+      <div class="legend-inline" id="sim-sweep-legend" hidden><span><i class="dot pol-mdp"></i>MDP policy</span><span><i class="dot pol-greedy"></i>Greedy</span><span><i class="dot pol-naive"></i>Nearest first</span></div>
+    </div>
+    <div class="lab-col">
+      <div class="label-sm">One episode, step by step</div>
+      <h3>Hidden truth, revealed</h3>
+      <div class="toolbar"><button class="btn solid" id="ep-play">▶ Play episode</button><div class="seg" id="ep-policy"><button data-policy="mdp" aria-pressed="true">MDP</button><button data-policy="greedy" aria-pressed="false">Greedy</button><button data-policy="naive" aria-pressed="false">Nearest</button></div></div>
+      <div class="map-wrap" style="margin-top:16px"><div class="map" id="ep-map"></div><div class="car" id="ep-car" aria-hidden="true"></div></div>
+      <div class="legend"><span>✓ truly free</span><span>■ truly taken</span><span>(revealed at the end)</span></div>
+      <ol class="timeline" id="ep-timeline" aria-live="polite"></ol>
+      <div class="stat-row"><div class="stat"><b id="ep-return">—</b><span>Discounted return</span></div><div class="stat"><b id="ep-outcome">—</b><span>Outcome</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="band" id="results">
+  <div class="wrap section">
+    <div class="section-head">
+      <div><div class="eyebrow">Testing and results</div><h2>Checked, not just claimed.</h2></div>
+      <p>The same test file runs in Node (<code>npm test</code>) and right here in your browser. Analytical Bayes results, an independent shortest-path oracle, Bellman fixed-point checks, safety scenarios and Monte Carlo comparisons.</p>
+    </div>
+    <div class="results-grid">
+      <div class="card score">
+        <div class="label-sm">Live test run</div>
+        <div class="big" id="score-big">—<small>/—</small></div>
+        <div class="score-bar"><span id="score-bar"></span></div>
+        <button class="btn solid" id="run-tests">▶ Run all tests in the browser</button>
+        <div class="facts">
+          <div class="stat"><b id="fact-safety">152</b><span>Safety scenarios</span></div>
+          <div class="stat"><b id="fact-paths">300</b><span>Shortest-path checks</span></div>
+          <div class="stat"><b id="fact-episodes">24.5k</b><span>Simulated episodes</span></div>
+          <div class="stat"><b id="fact-time">—</b><span>Run time</span></div>
+        </div>
+      </div>
+      <div class="card"><div class="test-list" id="test-list"><p class="muted" style="padding:22px;font-size:12px">Press “Run all tests” to execute the suite.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section wrap" id="team">
+  <div class="section-head">
+    <div><div class="eyebrow">The team</div><h2>Four people, one parking lot.</h2></div>
+    <p>All four of us worked across the project. Each member owns one part for final review and for the defense, and can walk you through it in the matching lab.</p>
+  </div>
+  <div class="team-grid" id="team-grid"></div>
+  <p class="team-note">The allocation shows primary responsibility for review and defense, as in our Team Contribution Statement. It is not a time log and no contribution percentages are claimed.</p>
+</section>
+
+<!-- ============ MODEL NOTE ============ -->
+<section class="band">
+  <div class="section wrap story">
+    <div><div class="eyebrow">A note on the model</div><h2>Simple by design.<br>Honest about limits.</h2></div>
+    <div>
+      <p>This is a classroom-sized simulation, not a live parking service. The map, sensor readings and rewards are teaching assumptions chosen to show how a system can decide under uncertainty.</p>
+      <ul>
+        <li>Sensor sensitivity 0.90 and false-alarm rate 0.20 are assumptions, not measured values.</li>
+        <li>Repeated readings are conditionally independent given the true occupancy.</li>
+        <li>Beliefs are rounded to 1% for planning; each space allows one recheck.</li>
+        <li>Spaces are considered in a fixed order (nearest to the entrance first); distances are measured from the entrance.</li>
+        <li>This is model-based planning — not Q-learning and not an exact continuous-belief POMDP solver.</li>
+        <li>Spaces at or above 50% occupancy are never used as a destination or driven through.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESOURCES ============ -->
+<section class="section wrap" id="project">
+  <div class="section-head"><div><div class="eyebrow">Project materials</div><h2>Everything in one place.</h2></div><p>Source code, reproducible tests and the documents we submitted with the project.</p></div>
+  <div class="resource-links">
+    <a class="card resource" href="https://github.com/psikonday/aiff"><span>GitHub repository<small>Source code &amp; history</small></span>↗</a>
+    <a class="card resource" href="docs/technical-report.pdf"><span>Technical report<small>PDF</small></span>↗</a>
+    <a class="card resource" href="docs/presentation.pptx"><span>Presentation<small>PowerPoint</small></span>↗</a>
+    <a class="card resource" href="docs/demo.mp4"><span>Demo video<small>MP4</small></span>↗</a>
+    <a class="card resource" href="docs/test-results.json"><span>Test results<small>JSON, generated by npm test</small></span>↗</a>
+    <a class="card resource" href="docs/team-contributions.pdf"><span>Team contributions<small>PDF</small></span>↗</a>
+    <a class="card resource" href="docs/ai-usage-declaration.pdf"><span>AI usage declaration<small>PDF</small></span>↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="wrap"><div class="foot"><strong>PARK / GUIDE</strong><span>Dilnaz · Aruana · Madina · Alnur</span><span>A small experiment in smarter parking.</span><a href="#top">Back to top ↑</a></div></footer>
+
+<!-- Defense mode -->
+<div class="defense" id="defense" role="region" aria-label="Defense timer">
+  <div class="defense-top">
+    <div class="defense-clock" id="defense-clock">2:00</div>
+    <div class="defense-now"><b id="defense-title"></b><span id="defense-who"></span></div>
+    <button class="btn small" id="defense-play">▶ Start</button>
+    <button class="btn small" id="defense-prev">←</button>
+    <button class="btn small" id="defense-next">→</button>
+    <button class="btn small" id="defense-reset">↺</button>
+    <button class="btn small" id="defense-close" aria-label="Close defense mode">✕</button>
+  </div>
+  <div class="defense-track" id="defense-track"></div>
+</div>
+
+<dialog id="shortcuts">
+  <h3>Keyboard shortcuts</h3>
+  <div class="shortcut-list">
+    <kbd>1</kbd><span>Brush: obstacle</span><kbd>2</kbd><span>Brush: space</span><kbd>3</kbd><span>Brush: entrance</span><kbd>4</kbd><span>Brush: erase</span>
+    <kbd>P</kbd><span>Preview drive</span><kbd>H</kbd><span>Toggle distances</span><kbd>R</kbd><span>Random lot</span>
+    <kbd>Ctrl Z</kbd><span>Undo map edit</span><kbd>D</kbd><span>Defense mode</span><kbd>T</kbd><span>Light / dark theme</span>
+    <kbd>Space</kbd><span>Start / pause the defense timer (when open)</span><kbd>?</kbd><span>This help</span>
+  </div>
+  <form method="dialog" style="margin-top:20px"><button class="btn solid">Close</button></form>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+<div class="tooltip" id="tooltip" role="tooltip"></div>
+
+<script src="js/core.js"></script>
+<script src="js/sim.js"></script>
+<script src="tests/spec.js"></script>
+<script src="js/ui/shared.js"></script>
+<script src="js/ui/planner.js"></script>
+<script src="js/ui/lab-search.js"></script>
+<script src="js/ui/lab-bayes.js"></script>
+<script src="js/ui/lab-mdp.js"></script>
+<script src="js/ui/lab-sim.js"></script>
+<script src="js/ui/extras.js"></script>
+</body>
+</html>
