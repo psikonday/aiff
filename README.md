@@ -57,6 +57,7 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 ## Deliverables
 
 - [Technical report source](docs/technical-report.md)
+- [Technical report (editable Word)](docs/technical-report.docx)
 - [Technical report PDF](docs/technical-report.pdf)
 - [Presentation outline](docs/presentation-outline.md)
 - [Presentation (PowerPoint, 7 slides)](docs/presentation.pptx)
@@ -65,7 +66,9 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 - [Test results](docs/test-results.json)
 - [Monte Carlo results](docs/monte-carlo-results.json)
 - [AI Usage Declaration](docs/ai-usage-declaration.md) (ChatGPT and Claude)
+- [AI Usage Declaration (editable Word)](docs/ai-usage-declaration.docx)
 - [Team Contribution Statement](docs/team-contributions.md)
+- [Team Contribution Statement (editable Word)](docs/team-contributions.docx)
 
 The report, presentation, video and signed-document PDFs should be kept in sync with the application version. The contribution allocations describe review and defense focus, not individual authorship percentages.
 
