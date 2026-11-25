@@ -48,7 +48,7 @@ Light/dark theme, keyboard shortcuts (`?`), responsive layout, reduced-motion su
 
 ## Results
 
-32 automated tests pass, including the original 20: analytical Bayes results, 152 prior/signal safety scenarios, 300 shortest-path comparisons against an independent oracle on 100 seeded maps, Bellman fixed-point and monotonicity checks, random-lot safety checks and about 24,500 simulated episodes. In simulation the MDP policy earns the highest mean discounted return at every tested occupancy rate (20%, 40%, 60%, 80%). See `docs/test-results.json`. No field data or real-world performance claim is made.
+32 automated checks pass (32/32), covering analytical Bayes results, 152 prior/signal safety scenarios, 300 shortest-path comparisons against an independent oracle on 100 seeded maps, Bellman fixed-point and monotonicity checks, random-lot safety checks and 24,500 simulated episodes in the test summary. The separate Monte Carlo policy comparison uses seed 42 and 2,000 episodes per policy at each of four occupancy priors (24,000 episodes total). The MDP policy has the highest sample mean discounted return at all four priors in this seeded run; no hypothesis test or statistical-significance claim is made. See `docs/test-results.json` and `docs/monte-carlo-results.json`. No field data or real-world performance claim is made.
 
 ## Model assumptions
 
@@ -56,8 +56,26 @@ Sensor sensitivity 0.90 and false-positive rate 0.20 are teaching assumptions. A
 
 ## Deliverables
 
-- [Technical report](docs/technical-report.pdf)
+- [Technical report source](docs/technical-report.md)
+- [Technical report (editable Word)](docs/technical-report.docx)
+- [Technical report PDF](docs/technical-report.pdf)
+- [Presentation outline](docs/presentation-outline.md)
 - [Presentation (PowerPoint, 7 slides)](docs/presentation.pptx)
+- [Presentation PDF](docs/presentation.pdf)
 - [Demo video](docs/demo.mp4)
-- [AI Usage Declaration](docs/ai-usage-declaration.pdf)
-- [Team Contribution Statement](docs/team-contributions.pdf)
+- [Test results](docs/test-results.json)
+- [Monte Carlo results](docs/monte-carlo-results.json)
+- [AI Usage Declaration](docs/ai-usage-declaration.md) (ChatGPT and Claude)
+- [AI Usage Declaration (editable Word)](docs/ai-usage-declaration.docx)
+- [Team Contribution Statement](docs/team-contributions.md)
+- [Team Contribution Statement (editable Word)](docs/team-contributions.docx)
+
+The report, presentation, video and signed-document PDFs should be kept in sync with the application version. The contribution allocations describe review and defense focus, not individual authorship percentages.
+
+
+## Authorship and provenance
+
+- AUTHORS.md
+- COPYRIGHT-NOTICE.md
+- docs/PROVENANCE.md
+- docs/FINAL-BINARY-UPLOAD.md
